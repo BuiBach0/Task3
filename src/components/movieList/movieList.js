@@ -10,10 +10,6 @@ const MovieList = () => {
 
     useEffect(() => {
         getData()
-    }, [])
-
-    useEffect(() => {
-        getData()
     }, [type])
 
     const getData = () => {
@@ -27,8 +23,8 @@ const MovieList = () => {
             <h2 className="list__title">{(type ? type : "POPULAR").toUpperCase()}</h2>
             <div className="list__cards">
                 {
-                    movieList.map(movie => (
-                        <Cards movie={movie} />
+                    movieList.map((movie,index) => (
+                        <Cards key={index} movie={movie} />
                     ))
                 }
             </div>

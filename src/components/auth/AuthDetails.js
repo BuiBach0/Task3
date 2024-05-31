@@ -20,7 +20,6 @@ const AuthDetails = () => {
 
   return (
     <div>
-      {authUser ? <p>Sign in </p> : <>Sign out</>}
     </div>
   )
 }

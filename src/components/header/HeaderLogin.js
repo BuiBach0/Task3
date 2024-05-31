@@ -6,7 +6,7 @@ const HeaderLogin = () => {
     return (
         <div className="header">
             <div className="headerLeft">
-                <Link to="/movie"><img className="header__icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png" /></Link>
+                <Link to="/home"><img className="header__icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png" /></Link>
             </div>
         </div>
     )

@@ -19,7 +19,7 @@ const SignUp = () => {
   };
 
   const validatePassword = (password) => {
-    const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    const re = /^\d{6,}$/;
     return re.test(String(password));
   };
 
@@ -52,11 +52,10 @@ const SignUp = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
+        
         nac("/");
       })
       .catch((error) => {
-        console.log(error);
         setConfirmPasswordError(error.message);
       });
   };

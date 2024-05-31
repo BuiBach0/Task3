@@ -4,6 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from "react-router-dom";
 import MovieList from "../../components/movieList/movieList";
+import { getDatabase, onValue, ref } from "firebase/database";
 
 const Home = () => {
 
@@ -14,7 +15,11 @@ const Home = () => {
         .then(res => res.json())
         .then(data => setPopularMovies(data.results))
     }, [])
-    
+    const database = getDatabase();
+      const starCountRef = ref(database,'users/12233');
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+      });
     return (
         <>
             <div className="poster">
@@ -23,11 +28,11 @@ const Home = () => {
                     autoPlay={true}
                     transitionTime={3}
                     infiniteLoop={true}
-                    showStatus={false}
+                    showStatus={true}
                 >
                     {
-                        popularMovies.map(movie => (
-                            <Link style={{textDecoration:"none",color:"white"}} to={`/movie/${movie.id}`} >
+                        popularMovies.map((movie,index) => (
+                            <Link key={index} style={{textDecoration:"none",color:"white"}} to={`/movie/${movie.id}`} >
                                 <div className="posterImage">
                                     <img src={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`} />
                                 </div>

@@ -46,4 +46,5 @@ a > span:hover {
 .button-signOut:hover{
     background-color: rgb(171, 18, 18);
     color: white;
+    cursor: pointer;
 }

@@ -24,12 +24,20 @@ const SignIn = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
+        
         setErrorMess(userCredential.user.email);
         nac("/home");
       })
       .catch((error) => {
-        console.log(error);
+        const errorCode = error.code;
+        if (errorCode === 'auth/invalid-credential') {
+          setPasswordError( 
+              "Sai email hoặc mật khẩu"
+            );
+          }
+        
+        
+        
       });
       let valid = true;
       if (!validateEmail(email)) {
